@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,40 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  user = {
+    name: 'Simon Grimm',
+    website: 'www.ionicacademy.com',
+    address: {
+      zip: 48149,
+      city: 'Muenster',
+      country: 'DE'
+    },
+    interests: ['Ionic', 'Angular', 'YouTube', 'Sports'
+   ]
+  };
+
+  constructor(private router: Router, private dataService: DataService) { }
+
+  openDetailsWithQueryParams(){
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          // special: 'whatever'
+          special: JSON.stringify(this.user)
+        }
+
+      }
+
+      this.router.navigate(['details'], navigationExtras);
+  }
+
+  openDetailsWithService(){
+      this.dataService.setData(42, this.user);
+      this.router.navigateByUrl('/details/42');
+  }
+
+  openDetailsWithState(){
+
+
+  }
 
 }
