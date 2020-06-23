@@ -16,6 +16,17 @@ export class DetailsPage implements OnInit {
         // this.data = params.special;
         this.data = JSON.parse(params.special);
       }
+
+
+      if(this.router.getCurrentNavigation().extras.state) {
+        this.data = this.router.getCurrentNavigation().extras.state.user;
+      }
+
+
+
+
+
+
     });
    }
 

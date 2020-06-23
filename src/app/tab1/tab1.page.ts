@@ -35,13 +35,21 @@ export class Tab1Page {
       this.router.navigate(['details'], navigationExtras);
   }
 
-  openDetailsWithService(){
+  openDetailsWithService() {
       this.dataService.setData(42, this.user);
       this.router.navigateByUrl('/details/42');
   }
 
   openDetailsWithState(){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        // special: 'whatever'
+        user: this.user
+      }
 
+    }
+
+    this.router.navigate(['details'], navigationExtras);
 
   }
 
