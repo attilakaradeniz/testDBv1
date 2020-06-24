@@ -41,7 +41,16 @@ export class Tab1Page {
   }
 
   openDetailsWithState(){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        // special: 'whatever'
+         user: this.user
+        // suppe: this.suppe
+      }
 
+    }
+
+    this.router.navigate(['details'], navigationExtras);
 
   }
 
